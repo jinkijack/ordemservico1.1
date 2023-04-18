@@ -3,6 +3,7 @@ require_once('../valida_session/valida_session.php');
 require_once('../layout/header.php'); 
 require_once('../layout/sidebar.php'); 
 require_once ('../bd/bd_ordem.php');
+require_once ('../bd/bd_generico.php');
 ?>
 
 <!-- Main Content -->
@@ -33,13 +34,15 @@ require_once ('../bd/bd_ordem.php');
                                 if ($_SESSION['perfil'] == 2) {
                                     $cod_usuario = $_SESSION['cod_usu'];
                                     $status = 1;
-                                    $total = consultaStatusCliente($cod_usuario,$status);
+                                    $tabela = "ordem";
+                                    $total = consultaStatusClienteTerceirizado($tabela,$cod_usuario,$status);
                                     echo ($total['0']['total']);
                                 }
                                 if ($_SESSION['perfil'] == 3) {
                                     $cod_usuario = $_SESSION['cod_usu'];
                                     $status = 1;
-                                    $total = consultaStatusTerceirizado($cod_usuario,$status);
+                                    $tabela = "ordem";
+                                    $total = consultaStatusClienteTerceirizado($tabela,$cod_usuario,$status);
                                     echo ($total['0']['total']);
                                 }
                             ?>
@@ -60,7 +63,7 @@ require_once ('../bd/bd_ordem.php');
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            Ordens de Serviço em Execussão</div>
+                            Ordens de Serviço em Execução</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                               <?php
                                 if ($_SESSION['perfil'] == 1) {
@@ -71,13 +74,15 @@ require_once ('../bd/bd_ordem.php');
                                 if ($_SESSION['perfil'] == 2) {
                                     $cod_usuario = $_SESSION['cod_usu'];
                                     $status = 2;
-                                    $total = consultaStatusCliente($cod_usuario,$status);
+                                    $tabela = "ordem";
+                                    $total = consultaStatusClienteTerceirizado($tabela,$cod_usuario,$status);
                                     echo ($total['0']['total']);
                                 }
                                 if ($_SESSION['perfil'] == 3) {
                                     $cod_usuario = $_SESSION['cod_usu'];
                                     $status = 2;
-                                    $total = consultaStatusTerceirizado($cod_usuario,$status);
+                                    $tabela = "ordem";
+                                    $total = consultaStatusClienteTerceirizado($tabela,$cod_usuario,$status);
                                     echo ($total['0']['total']);
                                 }
                             ?>  
@@ -108,13 +113,15 @@ require_once ('../bd/bd_ordem.php');
                                 if ($_SESSION['perfil'] == 2) {
                                     $cod_usuario = $_SESSION['cod_usu'];
                                     $status = 3;
-                                    $total = consultaStatusCliente($cod_usuario,$status);
+                                    $tabela = "ordem";
+                                    $total = consultaStatusClienteTerceirizado($tabela,$cod_usuario,$status);
                                    echo ($total['0']['total']);
                                 }
                                 if ($_SESSION['perfil'] == 3) {
                                     $cod_usuario = $_SESSION['cod_usu'];
                                     $status = 3;
-                                    $total = consultaStatusTerceirizado($cod_usuario,$status);
+                                    $tabela = "ordem";
+                                    $total = consultaStatusClienteTerceirizado($tabela,$cod_usuario,$status);
                                     echo ($total['0']['total']);
                                 }
                             ?>  

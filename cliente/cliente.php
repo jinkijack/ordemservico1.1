@@ -2,6 +2,7 @@
 require_once('../valida_session/valida_session.php');
 require_once('../layout/header.php'); 
 require_once('../layout/sidebar.php');  
+require_once ("../bd/bd_generico.php");
 
 unset ($_SESSION['nome']);
 unset ($_SESSION['email']);
@@ -82,7 +83,8 @@ unset ($_SESSION['telefone']);
                         <tbody>
                             <?php 
                             require_once ("../bd/bd_cliente.php");
-                            $clientes = listaClientes();
+                            $tabela = "cliente";
+                            $clientes = listaDados($tabela);
                             foreach($clientes as $dados): 
                                 ?>
                                 <tr>

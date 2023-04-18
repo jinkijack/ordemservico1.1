@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+require_once("../bd/bd_generico.php");
 if ((empty($_POST['email'])) OR (empty($_POST['senha'])) OR (empty($_POST['perfil']))){
     header("Location: ../index.php"); 
 }
@@ -11,14 +11,24 @@ else{
 	$perfil = $_POST["perfil"];
 
 	if ($perfil == 1) {
-		require_once ("../bd/bd_usuario.php");
+	/*	require_once ("../bd/bd_usuario.php");
 		$dados = checaUsuario($email,$senha);
+		*/
+		$tabela = "usuario";
+		$dados = checaLogin($tabela,$email, $senha);
 	}elseif($perfil == 2){
+		/*
 		require_once ("../bd/bd_cliente.php");
 		$dados = checaCliente($email,$senha);
+		*/
+		$tabela = "cliente";
+		$dados = checaLogin($tabela,$email, $senha);
 	}else{
+		/*
 		require_once ("../bd/bd_terceirizado.php");
-		$dados = checaTerceirizado($email,$senha);
+		$dados = checaTerceirizado($email,$senha);*/
+		$tabela = "terceirizado";
+		$dados = checaLogin($tabela,$email, $senha);
 	}
 
 	if($dados == "") {

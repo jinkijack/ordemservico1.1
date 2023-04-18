@@ -1,6 +1,7 @@
 <?php
 require_once('../valida_session/valida_session.php');
 require_once('../layout/header.php'); 
+require_once ("../bd/bd_generico.php");
 require_once('../layout/sidebar.php'); 
 
 unset ($_SESSION['nome']);
@@ -76,7 +77,8 @@ unset ($_SESSION['senha']);
                         <tbody>
                             <?php 
                             require_once ("../bd/bd_usuario.php");
-                            $usuarios = listaUsuarios();
+                            $tabela = "usuario";
+                            $usuarios = listaDados($tabela);
                             foreach($usuarios as $dados): 
                                 ?>
                                 <tr>

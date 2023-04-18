@@ -2,6 +2,7 @@
 require_once('../valida_session/valida_session.php');
 require_once('../layout/header.php'); 
 require_once('../layout/sidebar.php'); 
+require_once ("../bd/bd_generico.php");
 unset ($_SESSION['nome']);
 unset ($_SESSION['valor']);
 ?>
@@ -71,7 +72,8 @@ unset ($_SESSION['valor']);
                         <tbody>
                             <?php 
                             require_once ("../bd/bd_servico.php");
-                            $servicos = listaServicos();
+                            $tabela = "servico";
+                            $servicos = listaDados($tabela);
                             foreach($servicos as $dados): 
                                 ?>
                                 <tr>
