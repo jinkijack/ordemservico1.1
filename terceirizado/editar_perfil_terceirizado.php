@@ -4,8 +4,10 @@ require_once('../valida_session/valida_session.php');
 require_once('../layout//header.php'); 
 require_once('../layout/sidebar.php'); 
 require_once ("../bd/bd_terceirizado.php");
+require_once("../bd/bd_generico.php");
+$tabela = 'terceirizado';
+$dados = buscaDadoseditarPerfil($tabela,$_SESSION['cod_usu']);
 
-$dados = buscaTerceirizadoeditar($_SESSION['cod_usu']);
 $nome = $dados["nome"];
 $email = $dados["email"];
 $telefone = $dados["telefone"];
@@ -76,7 +78,7 @@ $telefone = $dados["telefone"];
 
                     <div class="card-footer text-muted" id="btn-form">
                         <div class=text-right>
-                            <a title="Voltar" href="home.php"><button type="button" class="btn btn-success"><i class="fas fa-arrow-circle-left"></i>&nbsp;</i>Voltar</button></a>
+                            <a title="Voltar" href="../home/home.php"><button type="button" class="btn btn-success"><i class="fas fa-arrow-circle-left"></i>&nbsp;</i>Voltar</button></a>
                             <a title="Atualizar"><button type="submit" name="updatebtn" class="btn btn-primary uptadebtn"><i class="fas fa-edit">&nbsp;</i>Atualizar</button> </a>
                         </div>
                     </div>

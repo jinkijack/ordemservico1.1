@@ -29,4 +29,33 @@ function listaDados($tabela){
     return $lista;
   }
 
+function buscaDadoseditarPerfil($tabela, $codigo){
+    $conexao = conecta_bd();
+    $query = $conexao->prepare("select * from $tabela where cod = ?");
+    $query->bindParam(1,$codigo);
+    $query->execute();
+    $lista = $query->fetch(PDO::FETCH_ASSOC);
+    return $lista;
+}
+function editarDados($codigo,$tabela,$dados){
+    $conexao = conecta_bd();
+    $query = $conexao->prepare("select * from $tabela where cod = ?");
+    $query->bindParam(1,$codigo);
+    $query->execute();
+    $retorno = $query->fetch(PDO::FETCH_ASSOC);
+    if(count($retorno)>0){
+        $campos = implode(' = ?, ', array_keys($dados)) . ' = ?';
+        $sql = "update $tabela set " . $campos . " where codigo = " . $codigo;
+        $stmt = $query = $conexao->prepare($sql);
+        $count = 1;
+        foreach($dados as $valor){
+            $stmt->bindParam($count,$valor);
+            $count++;
+        }
+        if($query->execute()){
+            return $query->rowCount();
+        }
+    }
+}
+
 ?>

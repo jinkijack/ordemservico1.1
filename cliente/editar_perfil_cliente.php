@@ -4,8 +4,10 @@ require_once('../valida_session/valida_session.php');
 require_once('../layout//header.php'); 
 require_once('../layout/sidebar.php'); 
 require_once ("../bd/bd_cliente.php");
+require_once("../bd/bd_generico.php");
+$tabela = 'cliente';
+$dados = buscaDadoseditarPerfil($tabela,$_SESSION['cod_usu']);
 
-$dados = buscaClienteeditar($_SESSION['cod_usu']);
 $nome = $dados["nome"];
 $email = $dados["email"];
 $endereco = $dados["endereco"];
