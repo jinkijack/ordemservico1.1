@@ -4,7 +4,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="home.php">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../home/home.php">
         <div class="sidebar-brand-text mx-3"><img class = "img-dashbord" src="../img/favicon-alvina.png">OS Admin</div>
     </a>
 
