@@ -57,5 +57,23 @@ function editarDados($codigo,$tabela,$dados){
         }
     }
 }
+function editarSenha($tabela,$codigo,$senha){
+    $conexao = conecta_bd();
+    $query = $conexao->prepare("select * from $tabela where cod = ?");
+    $query->bindParam(1,$codigo);
+    $query->execute();
+    $retorno = $query->fetch(PDO::FETCH_ASSOC);
+    if(count($retorno)>0){
+        $query = $conexao->prepare("update $tabela set senha = ? where cod = ?");
+        $query->bindParam(1,$senha);
+        $query->bindParam(2,$codigo);
+        $retorno = $query->execute();
+        if($retorno){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+}
 
 ?>
