@@ -47,4 +47,27 @@ function cadastraOrdem($cod_cliente,$cod_servico,$cod_terceirizado,$data_servico
         return 0;
     }
 }
+
+function buscaOrdemadd(){
+    $conexao = conecta_bd();
+    $query = $conexao->prepare("SELECT
+                                c.nome AS nome_cliente,
+                                t.nome AS nome_terceirizada,
+                                s.nome AS nome_servico,
+                                s.valor as valor_servico,
+                                o.data_servico AS data_servico,
+                                o.status AS status
+                            FROM
+                                ordem o, servico s, cliente c, terceirizado t
+                            WHERE
+                                o.cod_cliente = c.cod AND
+                                o.cod_servico = s.cod AND
+                                o.cod_terceirizado = t.cod
+                                order by o.cod desc limit 1"
+                                );
+        $query->execute();
+        $lista = $query->fetch(PDO::FETCH_ASSOC);
+        return $lista;
+}
+
 ?>

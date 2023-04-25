@@ -7,9 +7,13 @@ require_once ("../bd/bd_servico.php");
 require_once ("../bd/bd_cliente.php");
 require_once ("../bd/bd_terceirizado.php");
 
-$clientes = listaClientes();
-$servicos = listaServicos();
-$terceirizados = listaTerceirizados();
+require_once ("../bd/bd_generico.php");
+$tCliente = 'cliente';
+$tServicos = 'servico';
+$tTercerizado = 'terceirizado';
+$clientes = listaDados($tCliente);
+$servicos = listaDados($tServicos);
+$terceirizados = listaDados($tTercerizado);
 ?>
 
 <!-- Main Content -->
