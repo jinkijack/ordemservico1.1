@@ -91,4 +91,16 @@ function consultaEmail($tabela, $email){
     }
 }
 
+function removeDados($tabela, $codigo){
+    $conexao = conecta_bd();
+    $query = $conexao->prepare("delete from $tabela where cod = ?");
+    $query->bindParam(1,$codigo);
+    $retorno = $query->execute();
+    if($retorno){
+        return 1;
+    }else{
+        return 0;
+    }
+}
+
 ?>

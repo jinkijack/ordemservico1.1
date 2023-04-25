@@ -1,10 +1,10 @@
 <?php 
 	require_once("../valida_session/valida_session.php");
-	require_once ("../bd/bd_terceirizado.php");
+	require_once ("../bd/bd_generico.php");
 
 	$codigo = $_GET['cod'];
-
-	$dados = removeTerceirizado($codigo);
+	$tabela = 'terceirizado';
+	$dados = removeDados($tabela,$codigo);
 
 	if($dados == 0){
 		$_SESSION['texto_erro'] = 'Os dados do terceirizado não foram excluidos do sistema!';
