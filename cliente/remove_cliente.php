@@ -3,7 +3,7 @@
 	require_once("../bd/bd_generico.php");
 
 	$codigo = $_GET['cod'];
-	$tabela = 'cliente'
+	$tabela = 'cliente';
 	$dados = removeDados($tabela,$codigo);
 
 	if($dados == 0){
