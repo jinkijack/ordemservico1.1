@@ -9,7 +9,10 @@ $perfil = 3;
 $data=date("y/m/d");
 
 require_once ("../bd/bd_terceirizado.php");
-$dados = buscaTerceirizado($email);
+require_once("../bd/bd_generico.php");
+$tabela = 'terceirizado';
+$dados = consultaEmail($tabela,$email);
+//$dados = buscaTerceirizado($email);
 
 if($dados != 0){
 	$_SESSION['texto_erro'] = 'Este email já existe cadastrado no sistema!';

@@ -40,4 +40,22 @@ function editarPerfilUsuario($codigo,$nome,$email,$data){
   }
 
 }
+
+function cadastraUsuario($nome,$senha,$email,$perfil,$status,$data){
+    $conexao = conecta_bd();
+
+    $query = $conexao->prepare("insert into usuario (nome,senha,email,perfil,status,data) values(?,?,?,?,?,?)");
+    $query->bindParam(1, $nome);
+    $query->bindParam(2, $senha);
+    $query->bindParam(3, $email);
+    $query->bindParam(4, $perfil);
+    $query->bindParam(5, $status);
+    $query->bindParam(6, $data);
+    $retorno = $query->execute();//retorno boolean padrao TRUE
+    if($retorno){
+        return 1;
+    } else{
+        return 0;
+    }
+}
 ?>

@@ -44,4 +44,29 @@ function editarPerfilCliente($codigo,$nome,$email,$endereco,$numero,$bairro,$cid
   }
 
 }
+
+function cadastraCliente($nome, $email, $senha, $endereco, $numero, $bairro, $cidade, $telefone, $status, $perfil, $data) {
+    $conexao = conecta_bd();
+
+    $query = $conexao->prepare("INSERT INTO cliente (nome, email, senha, endereco, numero, bairro, cidade, telefone, status, perfil, data) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $query->bindParam(1, $nome);
+    $query->bindParam(2, $email);
+    $query->bindParam(3, $senha);
+    $query->bindParam(4, $endereco);
+    $query->bindParam(5, $numero);
+    $query->bindParam(6, $bairro);
+    $query->bindParam(7, $cidade);
+    $query->bindParam(8, $telefone);
+    $query->bindParam(9, $status);
+    $query->bindParam(10, $perfil);
+    $query->bindParam(11, $data);
+    $retorno = $query->execute();
+
+    if ($retorno) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
 ?>

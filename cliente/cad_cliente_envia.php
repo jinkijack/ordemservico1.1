@@ -13,7 +13,10 @@ $perfil = 2;
 $data=date("y/m/d");
 
 require_once ("../bd/bd_cliente.php");
-$dados = buscaCliente($email);
+//$dados = buscaCliente($email);
+require_once("../bd/bd_generico.php");
+$tabela = 'cliente';
+$dados = consultaEmail($tabela,$email);
 
 if($dados != 0){
 	$_SESSION['texto_erro'] = 'Este email já existe cadastrado no sistema!';

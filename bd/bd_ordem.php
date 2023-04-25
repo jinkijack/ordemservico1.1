@@ -28,6 +28,23 @@ function listaOrdem(){
         $query->execute();
         $lista = $query->fetchAll(PDO::FETCH_ASSOC);
         return $lista;
-    
+}
+
+function cadastraOrdem($cod_cliente,$cod_servico,$cod_terceirizado,$data_servico,$status,$data){
+    $conexao = conecta_bd();
+
+    $query = $conexao->prepare("INSERT INTO ordem (cod_cliente, cod_servico, cod_terceirizado, data_servico, status, data) VALUES (?, ?, ?, ?, ?, ?)");
+    $query->bindParam(1, $cod_cliente);
+    $query->bindParam(2, $cod_servico);
+    $query->bindParam(3, $cod_terceirizado);
+    $query->bindParam(4, $data_servico);
+    $query->bindParam(5, $status);
+    $query->bindParam(6, $data);
+    $retorno = $query->execute();
+    if ($retorno) {
+        return 1;
+    } else {
+        return 0;
+    }
 }
 ?>

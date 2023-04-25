@@ -82,7 +82,9 @@ require_once('../layout/sidebar.php');
                                     <td class="text-center"><?= date('d/m/Y',strtotime($dados['data_servico']))?></td>
                                     <td class="text-center"><?= ($dados['status'] == 1) ? '<span class="badge badge-danger">Aberta</span>' : (($dados['status'] == 2)?'<span class="badge badge-warning">Executando</span>':'<span class="badge badge-info">Concluida</span>') ?></td>
                                     <td class="text-center"> 
+                                    <?php if (($dados['status'] == 2) or ($dados['status'] == 1) ):?>
                                         <a title="Atualizar" href="editar_ordem.php?cod=<?=$dados['cod']; ?>" class="btn btn-sm btn-success"><i class="fas fa-edit">&nbsp;</i>Atualizar</a>
+                                    <?php endif ?>
                                     </td>
                                     <td class="text-center">
                                     <?php if (($dados['status'] == 1) or ($dados['status'] == 3)):?> 
@@ -90,8 +92,6 @@ require_once('../layout/sidebar.php');
                                     <?php endif ?>
                                     </td> 
                                 </tr>
-
-
                                 <div class="modal fade" id="excluir-<?=$dados['cod'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">

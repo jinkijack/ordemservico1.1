@@ -27,7 +27,7 @@ function listaDados($tabela){
     $query->execute();
     $lista = $query->fetchAll(PDO::FETCH_ASSOC);
     return $lista;
-  }
+}
 
 function buscaDadoseditarPerfil($tabela, $codigo){
     $conexao = conecta_bd();
@@ -37,6 +37,7 @@ function buscaDadoseditarPerfil($tabela, $codigo){
     $lista = $query->fetch(PDO::FETCH_ASSOC);
     return $lista;
 }
+
 function editarDados($codigo,$tabela,$dados){
     $conexao = conecta_bd();
     $query = $conexao->prepare("select * from $tabela where cod = ?");
@@ -57,6 +58,7 @@ function editarDados($codigo,$tabela,$dados){
         }
     }
 }
+
 function editarSenha($tabela,$codigo,$senha){
     $conexao = conecta_bd();
     $query = $conexao->prepare("select * from $tabela where cod = ?");
@@ -73,6 +75,19 @@ function editarSenha($tabela,$codigo,$senha){
         }else{
             return 0;
         }
+    }
+}
+
+function consultaEmail($tabela, $email){
+    $conexao = conecta_bd();
+    $query = $conexao->prepare("SELECT * from $tabela where email = ?");
+    $query->bindParam(1,$email);
+    $query->execute();
+    $total = $query->fetch(PDO::FETCH_ASSOC);
+    if($total){
+        return 1;
+    }else{
+        return 0;
     }
 }
 
